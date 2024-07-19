@@ -16,4 +16,4 @@ function forwardAuthenticated(req, res, next) {
     }
 }
 
-module.exports = { ensureAuthenticated, forwardAuthenticated, ensureKyc};
+module.exports = { ensureAuthenticated, forwardAuthenticated};

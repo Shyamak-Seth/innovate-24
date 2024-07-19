@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= report.subject %></title>
+</head>
+<body>
+    <h2><%= report.subject %></h2>
+    <p><%= report.body %></p><br>
+    <p><b><%= report.fname + ' ' + report.lname %>&nbsp;&lt;<%= report.email %>&gt;</b></p>
+    <p><b><%= new Date(report.date).toLocaleString('en-IN') %></b></p>
+</body>
+</html>

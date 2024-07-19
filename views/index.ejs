@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <h2>Hello, <%= user.fname %>!</h2>
+    <p>Your points: <b><%= user.points %></b></p>
+    <p>Production this year: <b><%= user.productionDuringYear %> kg</b></p>
+    <p>Total Production during lifetime: <b><%= user.production %> kg</b></p>
+    <p>Current Loyalty Level: <b><%= user.loyaltyLevel %></b></p>
+    <p>Currently growing crops: <b><%= user.crops.join(', ') %></b></p>
+    <a href="/report">Report Fraud</a><br>
+</body>
+</html>
