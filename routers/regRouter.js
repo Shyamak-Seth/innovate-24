@@ -7,9 +7,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-     const {email, password, fname, lname, cnfpassword, landsize, landDocument} = req.body
+     const {email, password, fname, lname, cnfpassword, landsize} = req.body
      const foundUser = await User.findOne({email})
-     if (!email || !password || !fname || !lname || !cnfpassword || !landsize || !landDocument) {
+     if (!email || !password || !fname || !lname || !cnfpassword || !landsize) {
         return res.render('register', {error: "Please enter all the credentials."})
      }
      if (password != cnfpassword) {
