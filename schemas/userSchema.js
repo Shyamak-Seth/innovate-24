@@ -10,7 +10,8 @@ const userSchema = new Schema({
     password: reqString,
     landSize: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
     loyaltyLevel: {
         type: String,
