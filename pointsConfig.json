@@ -1,0 +1,103 @@
+[
+    {
+        "crop": "paddy",
+        "price": 20
+    },
+    {
+        "crop": "maize",
+        "price": 20,
+        "points": 5
+    },
+    {
+        "crop": "wheat",
+        "price": 20
+    },
+    {
+        "crop": "barley",
+        "price": 20
+    },
+    {
+        "crop": "bajra",
+        "price": 30,
+        "points": 5
+    },
+    {
+        "crop": "jowar",
+        "price": 30
+    },
+    {
+        "crop": "ragi",
+        "price": 40,
+        "points": 5
+    },
+    {
+        "crop": "soyabeen",
+        "price": 50
+    },
+    {
+        "crop": "gram",
+        "price": 50,
+        "points": 5
+    },
+    {
+        "crop": "jute",
+        "price": 50
+    },
+    {
+        "crop": "groundnut",
+        "price": 60
+    },
+    {
+        "crop": "masur",
+        "price": 60,
+        "points": 10
+    },
+    {
+        "crop": "rapeseed",
+        "price": 60
+    },
+    {
+        "crop": "mustard",
+        "price": 60
+    },
+    {
+        "crop": "safflower",
+        "price": 60
+    },
+    {
+        "crop": "tur",
+        "price": 70
+    },
+    {
+        "crop": "sunflower",
+        "price": 70,
+        "points": 10
+    },
+    {
+        "crop": "urad",
+        "price": 70
+    },
+    {
+        "crop": "cotton",
+        "price": 70
+    },
+    {
+        "crop": "nigerseed",
+        "price": 80,
+        "points": 10
+    },
+    {
+        "crop": "moong",
+        "price": 90,
+        "points": 10
+    },
+    {
+        "crop": "sesamium",
+        "price": 90
+    },
+    {
+        "crop": "copra",
+        "price": 120,
+        "points": 15
+    }
+]

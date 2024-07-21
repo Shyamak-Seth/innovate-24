@@ -37,6 +37,16 @@ const userSchema = new Schema({
         type: Number,
         required: true,
         default: 0
+    },
+    kyc: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    age: {
+        type: Number,
+        required: true,
+        default: 0
     }
 })
 
