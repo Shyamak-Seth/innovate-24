@@ -10,17 +10,17 @@
             width: 100%;
             position: absolute;
             top: 0;
-            margin-left: -2.5vw;
+            margin-left: -5.5vh;
         }
 
         .down-bar {
             width: 100%;
             position: absolute; 
             bottom: 0;
-            margin-left: -2.5vw;
+            margin-left: -5.5vh;
         }
         .heading {
-            font-size: 2.5vw;
+            font-size: 2.3rem;
             letter-spacing: -1.395px;
             margin-bottom: 1vh;
             align-self: flex-start;
@@ -42,9 +42,9 @@
             flex-direction: row;
             align-items: center;
             justify-content: flex-start;
-            gap: 1vw;
+            gap: 3vh;
 
-            padding-left: 1vw;
+            padding-left: 3vh;
         }
         input {
             height: 80%;
@@ -88,7 +88,7 @@
         .image {
             position: absolute;
             bottom: 0;
-            margin-left: -2.5vw;
+            margin-left: -5.5vh;
             width: 100%;
             border-radius: 0 0 56px 56px;
         }
@@ -97,7 +97,7 @@
 <body>
     <%- include('partials/phone.ejs') %>
 
-    <div class="phone">
+    <div id="phone" class="phone">
         <svg class="up-time" width="430" height="53" viewBox="0 0 430 53" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect opacity="0.35" x="362.351" y="22.5546" width="26.6231" height="13.3116" rx="4.21533" stroke="black" stroke-width="1.1093"/>
             <path opacity="0.4" d="M390.527 27.1767V31.6139C391.42 31.2381 392 30.3639 392 29.3953C392 28.4267 391.42 27.5525 390.527 27.1767Z" fill="black"/>
@@ -131,7 +131,7 @@
              <p class="account-p">Don't have an account? <a href="/register">Create One!</a></p>
         </form>
 
-        <img class="image" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264551056310927490/image.png?ex=669e4872&is=669cf6f2&hm=55301d4366fafd922427197488b7c36360f1d179a2d4a0177b18fb1db93aa9fc&" alt="">
+        <img id="image" class="image" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264551056310927490/image.png?ex=669e4872&is=669cf6f2&hm=55301d4366fafd922427197488b7c36360f1d179a2d4a0177b18fb1db93aa9fc&" alt="">
 
         <svg class="down-bar" width="430" height="34" viewBox="0 0 430 34" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="139" y="21" width="152" height="5" rx="2.5" fill="black" fill-opacity="0.6"/>
@@ -141,6 +141,23 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 <script>
+    function isMobileDevice() {
+        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    }
+
+    if (isMobileDevice()) {
+        // console.log("hello");
+        const phone = document.getElementById('phone')
+        const image = document.getElementById('image')
+        phone.style.width = '100vw'
+        phone.style.height = '100vh'
+        phone.style.borderRadius = '0'
+        
+        image.style.borderRadius = '0'
+    }
+
+
+
     const error = document.getElementById('error').innerText;
 
     if (error) {
