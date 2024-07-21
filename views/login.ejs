@@ -51,6 +51,7 @@
             background: transparent;
             outline: none;
             border: none;
+            width: 70%;
         }
         button {
             width: 100%;
@@ -91,6 +92,9 @@
             margin-left: -5.5vh;
             width: 100%;
             border-radius: 0 0 56px 56px;
+            height: 47vh;
+            object-fit: cover;
+            object-position: center top;
         }
     </style>
 </head>
@@ -98,7 +102,7 @@
     <%- include('partials/phone.ejs') %>
 
     <div id="phone" class="phone">
-        <svg class="up-time" width="430" height="53" viewBox="0 0 430 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="up-time" width="430" height="53" viewBox="0 0 430 53" fill="none" xmlns="http://www.w3.org/2000/svg" id="up-time">
             <rect opacity="0.35" x="362.351" y="22.5546" width="26.6231" height="13.3116" rx="4.21533" stroke="black" stroke-width="1.1093"/>
             <path opacity="0.4" d="M390.527 27.1767V31.6139C391.42 31.2381 392 30.3639 392 29.3953C392 28.4267 391.42 27.5525 390.527 27.1767Z" fill="black"/>
             <rect x="364.02" y="24.2186" width="23.29" height="9.98368" rx="2.77324" fill="black"/>
@@ -108,21 +112,21 @@
             <rect x="152.5" y="11.33" width="125" height="36.67" rx="18.335" fill="black"/>
             </svg>
 
-        <form action="" method="POST">
+        <form action="" method="POST" id="mainForm">
             <h1 class="heading">Login</h1>
             <div class="input-container">
                 <svg class="mail-svg" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.3636 0.143482L9.54809 6.21757C9.38996 6.35856 9.18551 6.43647 8.97365 6.43647C8.7618 6.43647 8.55734 6.35856 8.39922 6.21757L1.55519 0.146934C1.71858 0.0971009 1.88846 0.0717934 2.05928 0.0718391H15.8699C16.0371 0.0716876 16.2034 0.0958204 16.3636 0.143482ZM17.5341 1.33896C17.5747 1.4857 17.5962 1.63935 17.5962 1.79817V10.4298C17.5962 10.8877 17.4144 11.3268 17.0906 11.6505C16.7669 11.9743 16.3278 12.1561 15.8699 12.1561H2.05928C1.60142 12.1561 1.16233 11.9743 0.838577 11.6505C0.514827 11.3268 0.332947 10.8877 0.332947 10.4298V1.79817C0.332947 1.63848 0.354526 1.48398 0.395095 1.33724L7.25035 7.50714C7.72467 7.92986 8.33786 8.16345 8.97322 8.16345C9.60858 8.16345 10.2218 7.92986 10.6961 7.50714L17.5341 1.33896Z" fill="black" fill-opacity="0.7"/>
                     </svg>
         
-                <input type="email" name="email" placeholder="Email">
+                <input type="email" name="email" placeholder="Email" autocomplete="off">
             </div>
             <div class="input-container">
                 <svg class="mail-svg" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.39915 11.3242L5.16786 10.0924C5.11392 10.0384 5.04989 9.99563 4.97942 9.96644C4.90895 9.93725 4.83342 9.92223 4.75714 9.92223C4.68086 9.92223 4.60533 9.93725 4.53486 9.96644C4.46439 9.99563 4.40036 10.0384 4.34642 10.0924C4.29248 10.1463 4.2497 10.2103 4.22051 10.2808C4.19132 10.3513 4.17629 10.4268 4.17629 10.5031C4.17629 10.5793 4.19132 10.6549 4.22051 10.7254C4.2497 10.7958 4.29248 10.8599 4.34642 10.9138L5.57829 12.1445L4.1415 13.5819L1.56978 13.41C1.42952 13.4008 1.29737 13.341 1.19787 13.2417C1.09837 13.1424 1.03827 13.0104 1.02874 12.8701L0.857483 10.2973L4.86192 6.29284C4.70948 5.44125 4.83279 4.56324 5.21391 3.78659C5.59503 3.00994 6.21406 2.37519 6.98092 1.97472C7.74777 1.57425 8.62242 1.42897 9.47756 1.56002C10.3327 1.69107 11.1237 2.09161 11.7354 2.70334C12.3472 3.31508 12.7477 4.10608 12.8788 4.96122C13.0098 5.81636 12.8645 6.691 12.4641 7.45785C12.0636 8.22471 11.4288 8.84374 10.6522 9.22486C9.87553 9.60598 8.99752 9.72929 8.14594 9.57685L6.39856 11.3236L6.39915 11.3242ZM8.45129 5.98748C8.55909 6.09532 8.68707 6.18086 8.82792 6.23924C8.96878 6.29761 9.11976 6.32767 9.27223 6.3277C9.42471 6.32772 9.57569 6.29772 9.71657 6.23939C9.85745 6.18107 9.98546 6.09557 10.0933 5.98777C10.2011 5.87998 10.2867 5.75199 10.3451 5.61114C10.4034 5.47028 10.4335 5.3193 10.4335 5.16683C10.4335 5.01435 10.4035 4.86337 10.3452 4.72249C10.2869 4.58161 10.2014 4.4536 10.0936 4.34577C9.87588 4.12798 9.58058 4.0056 9.27264 4.00555C8.96471 4.0055 8.66936 4.12777 8.45158 4.34548C8.2338 4.56318 8.11142 4.85848 8.11136 5.16642C8.11131 5.47435 8.23358 5.7697 8.45129 5.98748Z" fill="black" fill-opacity="0.7"/>
                     </svg>
                     
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="password" placeholder="Password" autocomplete="off">
             </div>
             <% if (messages.error) { %>
                 <p id='error' style="display: none;"><%= messages.error %></p>
@@ -152,8 +156,9 @@
         phone.style.width = '100vw'
         phone.style.height = '100vh'
         phone.style.borderRadius = '0'
-        
+        document.getElementById('up-time').style.display = 'none'
         image.style.borderRadius = '0'
+        document.getElementById('mainForm').style.marginTop = '-5vh'
     }
 
 
