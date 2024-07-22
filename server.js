@@ -15,6 +15,7 @@ const indexRouter = require('./routers/indexRouter'),
     regRouter = require('./routers/regRouter'),
     reportRouter = require('./routers/reportRouter'),
     cropRouter = require('./routers/cropRouter'),
+    retirementRouter = require('./routers/retirementRouter'),
     loyaltyRouter = require('./routers/loyaltyRouter'),
     perksRouter = require('./routers/perksRouter'),
     jobRouter = require('./routers/jobRouter')
@@ -41,6 +42,7 @@ app.use('/register', forwardAuthenticated, regRouter)
 app.use('/report', ensureAuthenticated, reportRouter)
 app.use('/crop', ensureAuthenticated, cropRouter)
 app.use('/level', ensureAuthenticated, loyaltyRouter)
+app.use('/retirement', ensureAuthenticated, retirementRouter)
 app.use('/perks', ensureAuthenticated, perksRouter)
 app.use('/job', ensureAuthenticated, jobRouter)
 
