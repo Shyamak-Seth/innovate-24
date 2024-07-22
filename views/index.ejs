@@ -44,6 +44,7 @@
             top: 0;
             margin-left: -1.5vh;
             width: 100%;
+            z-index: 10000000;
         }
 
         .loyalty > p {
@@ -77,7 +78,7 @@
 
         .box > h1 {
             color: #000;
-            font-size: 2rem;
+            font-size: 5vh;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
@@ -86,7 +87,7 @@
 
         .box > p {
             color: #DC4B52;
-            font-size: 0.8rem;
+            font-size: 1.7vh;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
@@ -204,7 +205,8 @@
             flex-direction: row;
             align-items: center;
             justify-content: space-evenly;
-
+            align-self: center;
+            
             position: absolute;
             bottom: 5vh;
         }
@@ -230,20 +232,20 @@
 
         <h1 class="heading">Welcome, <%= user.fname %>! 👋</h1>
 
-        <div class="loyalty">
+        <div id="loyalty" class="loyalty">
             <% if (user.loyaltyLevel == 'Bronze') { %>
-                <img class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264652436681789560/image.png?ex=669ea6dd&is=669d555d&hm=f4c5038c42a92f609b54da3320b2f676e00e84dbe57bdf1c5e9a590fcab66b7f&" alt="">
+                <img id="loyaltyImg" class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264652436681789560/image.png?ex=669ea6dd&is=669d555d&hm=f4c5038c42a92f609b54da3320b2f676e00e84dbe57bdf1c5e9a590fcab66b7f&" alt="">
             <% } else if (user.loyaltyLevel == 'Silver') { %>
-                <img class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264648847930429460/image.png?ex=669ea385&is=669d5205&hm=dc56de9aba31df9dfed4fa2410c2c5a42964354d35e01b0dd1f5f4c6f9785e3b&" alt="">
+                <img id="loyaltyImg" class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264648847930429460/image.png?ex=669ea385&is=669d5205&hm=dc56de9aba31df9dfed4fa2410c2c5a42964354d35e01b0dd1f5f4c6f9785e3b&" alt="">
             <% } else { %>
-                <img class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264648847930429460/image.png?ex=669ea385&is=669d5205&hm=dc56de9aba31df9dfed4fa2410c2c5a42964354d35e01b0dd1f5f4c6f9785e3b&" alt="">
+                <img id="loyaltyImg" class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264648847930429460/image.png?ex=669ea385&is=669d5205&hm=dc56de9aba31df9dfed4fa2410c2c5a42964354d35e01b0dd1f5f4c6f9785e3b&" alt="">
             <% } %>
 
             <p>YOUR CURRENT TIER></p>
             <h1><%= user.loyaltyLevel %></h1>
         </div>
 
-        <div class="boxes">
+        <div id="boxes" class="boxes">
             <div class="box">
                 <h1><%= user.productionDuringYear %></h1>
                 <p style="color: #466EFF;">kg</p>
@@ -326,32 +328,31 @@
 </body>
 <script>
     function isMobileDevice() {
-        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        return window.innerWidth <= 800;
     }
 
     if (isMobileDevice()) {
         // console.log("hello");
         const phone = document.getElementById('phone')
+        const boxes = document.getElementById('boxes')
         phone.style.width = '100vw'
         phone.style.height = '100vh'
         phone.style.borderRadius = '0'
+        boxes.style.marginTop = '7vh'
         document.getElementById('up-time').style.display = 'none'
-        document.getElementById('mainForm').style.marginTop = '-5vh'
+        const loyalty = document.getElementById('loyaltyImg')
+    
+        loyalty.addEventListener('click', () => {
+            console.log('bhai')
+            window.location.href = '/level'
+        })
     }
+    const loyalty = document.getElementById('loyalty')
+
+    loyalty.addEventListener('click', () => {
+        window.location.href = '/level'
+    })
 
 
-
-    const error = document.getElementById('error').innerText;
-
-    if (error) {
-        console.log('yes')
-        var notyf = new Notyf({
-            position: {
-                x: 'center',
-                y: 'bottom',
-            },
-        });
-        notyf.error(error);
-    }
 </script>
 </html>

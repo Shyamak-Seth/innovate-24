@@ -16,7 +16,8 @@ router.get('/', async (req, res) => {
     } else {
         userPercentage = Math.round((userPoints / levelsConfig[userLevel]) * 100)
     }
-    res.render('level', {level: userLevel, percentage: `${userPercentage}%`})
+    res.render('level', {user: req.user, level: userLevel, percentage: `${userPercentage}%`})
+
 })
 
 module.exports = router
