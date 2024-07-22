@@ -127,7 +127,14 @@ router.post('/getEstimatedPrice', async (req, res) => {
     const pointsConfig = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'pointsConfig.json'), {
         encoding: 'utf8'
     }))
-
+    const {crop, quantity} = req.body
+    for (let i = 0; i < pointsConfig.length; i++) {
+        if (pointsConfig[i].crop == crop) {
+            var totalPrice = pointsConfig[i].price * quantity
+            return res.json({price: totalPrice.toString()})
+        }
+    }
+    return res.json({price: '0'})
 })
 
 module.exports = router
