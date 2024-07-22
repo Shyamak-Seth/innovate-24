@@ -5,7 +5,7 @@ function ensureAuthenticated(req, res, next) {
       return next();
     }
     else res.redirect('/login');
-  }
+}
 
 function forwardAuthenticated(req, res, next) {
     if (!req.isAuthenticated()) {
@@ -16,4 +16,20 @@ function forwardAuthenticated(req, res, next) {
     }
 }
 
-module.exports = { ensureAuthenticated, forwardAuthenticated};
+function ensureKyc(req, res, next) {
+    if (req.user.kyc) {
+        return next()
+    } else {
+      res.redirect('/kyc')
+    }
+}
+
+function ensureVerified(req, res, next) {
+  if (req.user.verified) {
+      return next()
+  } else {
+      res.redirect('/verify')
+  }
+}
+
+module.exports = { ensureAuthenticated, forwardAuthenticated, ensureKyc, ensureVerified};

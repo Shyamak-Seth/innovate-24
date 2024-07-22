@@ -9,7 +9,7 @@ router.get('/new', (req, res) => {
 
 router.post('/new', async (req, res) => {
     try {
-        const {crop} = req.body
+        const {crop, quantity} = req.body
         const foundUser = await User.findOne({email: req.user.email})
         const currentCrops = foundUser.crops
         for (let i = 0; i < foundUser.crops.length; i++) {
@@ -27,35 +27,10 @@ router.post('/new', async (req, res) => {
                 crops: currentCrops
             }
         })
-        res.redirect(`/crop/view/${crop}`)     
+        res.redirect(`/`)     
     } catch (error) {
         res.json({success: false})
     }
-})
-
-router.get('/view', async (req, res) => {
-    const foundUser = await User.findOne({email: req.user.email})
-    const currentCrops = []
-    for (let i = 0; i < foundUser.crops.length; i++) {
-        currentCrops.push(foundUser.crops[i].name)
-    }
-    res.render('viewcrops', {crops: currentCrops})
-})
-
-router.get('/view/:id', async (req, res) => {
-    const {id} = req.params
-    const foundUser = await User.findOne({email: req.user.email})
-    var isIdValid = false
-    var foundCrop;
-    for (let i = 0; i < foundUser.crops.length; i++) {
-        if (foundUser.crops[i].name == id) {
-            isIdValid = true
-            foundCrop = foundUser.crops[i]
-            break
-        }
-    }
-    if (!isIdValid) return res.redirect('/')
-    res.render('viewcrop', {crop: foundCrop})
 })
 
 router.get('/harvest', async (req, res) => {
