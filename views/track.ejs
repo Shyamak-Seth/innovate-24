@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Crop</title>
+</head>
+<body>
+    <form action="" method="POST">
+        <select name="crop">
+            <option value="paddy">Paddy</option>
+            <option value="maize">Maize</option>
+            <option value="wheat">Wheat</option>
+            <option value="barley">Barley</option>
+            <option value="bajra">Bajra</option>
+            <option value="jowar">Jowar</option>
+            <option value="ragi">Ragi</option>
+            <option value="soyabeen">Soyabeen</option>
+            <option value="gram">Gram</option>
+            <option value="jute">Jute</option>
+            <option value="groundnut">Groundnut</option>
+            <option value="masur">Masur</option>
+            <option value="rapeseed">Rapeseed</option>
+            <option value="mustard">Mustard</option>
+            <option value="safflower">Safflower</option>
+            <option value="tur">Tur</option>
+            <option value="sunflower">Sunflower</option>
+            <option value="urad">Urad</option>
+            <option value="cotton">Cotton</option>
+            <option value="nigerseed">Nigerseed</option>
+            <option value="moong">Moong</option>
+            <option value="sesamium">Sesamium</option>
+            <option value="copra">Copra</option>
+        </select>
+        <input type="submit"><br>
+        <% if (error) { %>
+            <p><%= error %></p>
+        <% } %>
+    </form>
+</body>
+</html>

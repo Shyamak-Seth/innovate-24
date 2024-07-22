@@ -4,7 +4,7 @@ const router = require('express').Router(),
     path = require('path')
 
 router.get('/new', (req, res) => {
-    res.render('newCrop')
+    res.render('track', {error: false})
 })
 
 router.post('/new', async (req, res) => {
@@ -12,6 +12,11 @@ router.post('/new', async (req, res) => {
         const {crop} = req.body
         const foundUser = await User.findOne({email: req.user.email})
         const currentCrops = foundUser.crops
+        for (let i = 0; i < foundUser.crops.length; i++) {
+            if (foundUser.crops[i].name == crop) {
+                return res.render('track', {error: 'Already tracking this crop!'})
+            }
+        }
         currentCrops.push({
             name: crop,
             harvest: 0,
@@ -22,10 +27,19 @@ router.post('/new', async (req, res) => {
                 crops: currentCrops
             }
         })
-        res.json({success: true})     
+        res.redirect(`/crop/view/${crop}`)     
     } catch (error) {
         res.json({success: false})
     }
+})
+
+router.get('/view', async (req, res) => {
+    const foundUser = await User.findOne({email: req.user.email})
+    const currentCrops = []
+    for (let i = 0; i < foundUser.crops.length; i++) {
+        currentCrops.push(foundUser.crops[i].name)
+    }
+    res.render('viewcrops', {crops: currentCrops})
 })
 
 router.get('/view/:id', async (req, res) => {
@@ -44,12 +58,22 @@ router.get('/view/:id', async (req, res) => {
     res.render('viewcrop', {crop: foundCrop})
 })
 
-router.get('/harvest', (req, res) => {
-    res.render('harvest')
+router.get('/harvest', async (req, res) => {
+    const foundUser = await User.findOne({email: req.user.email})
+    const currentCrops = []
+    for (let i = 0; i < foundUser.crops.length; i++) {
+        currentCrops.push(foundUser.crops[i].name)
+    }
+    res.render('harvest', {crops: currentCrops, error: false})
 })
 
 router.post('/harvest', async (req, res) => {
     try {
+        const foundUser = await User.findOne({email: req.user.email})
+        const currentCrops = []
+        for (let j = 0; j < foundUser.crops.length; j++) {
+            currentCrops.push(foundUser.crops[j].name)
+        }
         const pointsConfig = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'pointsConfig.json'), {
             encoding: 'utf8'
         }))
@@ -89,7 +113,6 @@ router.post('/harvest', async (req, res) => {
                 } else {
                     totalPoints += 50
                 }
-                const foundUser = await User.findOne({email: req.user.email})
                 if (currentCrop.points) {
                     totalPoints += currentCrop.points
                 }
@@ -110,13 +133,13 @@ router.post('/harvest', async (req, res) => {
                         loyaltyLevel: loyaltyLevel
                     }
                 })
-                return res.json({success: true})
+                return res.redirect('/')
             }
         }     
-        res.json({success: false}) 
+        res.render('harvest', {crops: currentCrops, error: 'Something went wrong. Please try again.'}) 
     } catch (error) {
         console.log(error)
-        res.json({success: false})
+        res.redirect('/crop/harvest')
     }
 })
 

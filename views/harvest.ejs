@@ -7,7 +7,12 @@
 </head>
 <body>
     <form action="" method="POST">
-        <input type="text" name="crop" placeholder="Crop:">
+        <!-- <input type="text" name="crop" placeholder="Crop:"> -->
+         <select name="crop">
+            <% for (let i = 0; i < crops.length; i++) { %>
+                <option value="<%= crops[i] %>"><%= crops[i].toUpperCase() %></option>
+            <% } %>
+         </select>
         <input type="number" name="quantity" placeholder="Harvest in KG:">
         <input type="submit">
     </form>
