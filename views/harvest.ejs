@@ -209,7 +209,7 @@
         <h1 class="heading" id="heading">Track Harvest</h1>
         <form action="" method="POST">
             <div class="inputContainer">
-                <select name="crop">
+                <select name="crop" id="crop">
                     <% for (let i = 0; i < crops.length; i++) { %>
                         <option value="<%= crops[i] %>"><%= crops[i].toUpperCase() %></option>
                     <% } %>
@@ -220,10 +220,10 @@
                     <path d="M3.31166 5.33445C3.51424 4.68964 4.11191 4.25095 4.78778 4.25095H13.2122C13.8881 4.25095 14.4858 4.68964 14.6883 5.33445L17.3682 13.8645C17.6814 14.8613 16.9369 15.8755 15.8921 15.8755H2.10791C1.06309 15.8755 0.318631 14.8613 0.631792 13.8645L3.31166 5.33445Z" fill="#494949"/>
                     <path d="M11.5728 2.90324C11.5728 4.32409 10.421 5.47592 9.00017 5.47592C7.57932 5.47592 6.42749 4.32409 6.42749 2.90324C6.42749 1.48239 7.57932 0.330566 9.00017 0.330566C10.421 0.330566 11.5728 1.48239 11.5728 2.90324ZM7.80893 2.90324C7.80893 3.56115 8.34227 4.09448 9.00017 4.09448C9.65807 4.09448 10.1914 3.56115 10.1914 2.90324C10.1914 2.24534 9.65807 1.71201 9.00017 1.71201C8.34227 1.71201 7.80893 2.24534 7.80893 2.90324Z" fill="#494949"/>
                     </svg>                    
-                <input type="number" name="quantity" placeholder="Weight of Crop (kg)">
+                <input type="number" name="quantity" placeholder="Weight of Crop (kg)" id="quantity">
             </div>
             <div style="display: flex; justify-content: flex-end; align-items: flex-end;">
-                <button type="button" class="calculateBtn">Calculate Price</button>
+                <button type="button" class="calculateBtn" onclick="calculatePrice()">Calculate Price</button>
             </div>
             <div style="display: flex; flex-direction: column;">
                 <p class="priceHeading">Estimated crop price</p>
@@ -242,6 +242,22 @@
 <script>
     function isMobileDevice() {
         return window.innerWidth <= 800;
+    }
+    async function calculatePrice() {
+        const cropName = document.getElementById('crop').value
+        const quantityValue = document.getElementById('quantity').value
+        const rawResp = await fetch('/crop/getEstimatedPrice', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                crop: cropName,
+                quantity: quantityValue
+            })
+        })
+        const respResolved = await rawResp.json()
+        document.getElementById('price').innerHTML = respResolved.price
     }
     window.onload = () => {
         if (isMobileDevice()) {
