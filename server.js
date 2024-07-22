@@ -14,7 +14,8 @@ const indexRouter = require('./routers/indexRouter'),
     loginRouter = require('./routers/loginRouter'),
     regRouter = require('./routers/regRouter'),
     reportRouter = require('./routers/reportRouter'),
-    cropRouter = require('./routers/cropRouter')
+    cropRouter = require('./routers/cropRouter'),
+    loyaltyRouter = require('./routers/loyaltyRouter')
 
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
@@ -37,5 +38,6 @@ app.use('/login', forwardAuthenticated, loginRouter)
 app.use('/register', forwardAuthenticated, regRouter)
 app.use('/report', ensureAuthenticated, reportRouter)
 app.use('/crop', ensureAuthenticated, cropRouter)
+app.use('/level', ensureAuthenticated, loyaltyRouter)
 
 app.listen(PORT, console.log(`Server listening on port ${PORT}`))
