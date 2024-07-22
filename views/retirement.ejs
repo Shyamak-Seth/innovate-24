@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retirement</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <style>
         .navbar {
             width: 38vh;
@@ -177,7 +178,11 @@
             <rect x="152.5" y="11.33" width="125" height="36.67" rx="18.335" fill="black"/>
             </svg>
         
-        <% if (!applyForRet) { %>
+        <% if (message) { %>
+            <p id="message" style="display: none;"><%= message %></p>
+        <% } %>
+
+        <% if (applyForRet) { %>
 
             <div style="cursor: pointer;" id="apply" class="button">
                 <div class="left">
@@ -190,8 +195,6 @@
                     <path d="M1.48047 7.16943C0.928184 7.16943 0.480469 7.61715 0.480469 8.16943C0.480469 8.72172 0.928184 9.16943 1.48047 9.16943L1.48047 7.16943ZM17.4277 8.87654C17.8182 8.48602 17.8182 7.85285 17.4277 7.46233L11.0637 1.09837C10.6732 0.707842 10.04 0.707842 9.64951 1.09837C9.25899 1.48889 9.25899 2.12206 9.64951 2.51258L15.3064 8.16943L9.64951 13.8263C9.25899 14.2168 9.25899 14.85 9.64951 15.2405C10.04 15.631 10.6732 15.631 11.0637 15.2405L17.4277 8.87654ZM1.48047 9.16943L16.7206 9.16943L16.7206 7.16943L1.48047 7.16943L1.48047 9.16943Z" fill="white"/>
                     </svg>                
             </div>
-            
-
             <div class="info">
                 <p class="name">Mr. <%= user.fname %></p>
                 <p><span>₹<%= pension %></span>/month</p>
@@ -200,17 +203,27 @@
                     <p>(not eligible)</p>
                 </button>
             </div>
-            <% } else { %>                
+        <% } else if (!pensionClaim) { %>
+            <div class="info" style="margin-top: 33vh;" >
+                <p class="name">Mr. <%= user.fname %></p>
+                <p><span>₹<%= pension %></span>/month</p>
+                <button disabled>
+                    <h1>Withdraw</h1>
+                    <p>(not eligible)</p>
+                </button>
+            </div>
 
-                <div class="info" style="margin-top: 33vh;">
-                    <p class="name">Mr. <%= user.fname %></p>
-                    <p><span>₹<%= pension %></span>/month</p>
-                    <button style="background-color: #01B764">
-                        <h1 style="color: #FFF;">Withdraw</h1>
-                    </button>
-                </div>
+        <% } else { %>
+            <div class="info" style="margin-top: 33vh;">
+                <p class="name">Mr. <%= user.fname %></p>
+                <p><span>₹<%= pension %></span>/month</p>
+                <button onclick="claimPension()" style="background-color: #01B764">
+                    <h1 style="color: #FFF;">Withdraw</h1>
+                </button>
+            </div>
+        <% } %>
 
-            <% } %>
+
         <svg onclick="window.history.back()"" id="back" class="back" width="12" height="21" viewBox="0 0 12 21" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.5304 1.49811L1.50391 10.5246L10.5304 19.551" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -243,6 +256,7 @@
             </svg>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 <script>
     function isMobileDevice() {
         return window.innerWidth <= 800;
@@ -257,9 +271,36 @@
         document.getElementById('up-time').style.display = 'none'
     }
 
+    function claimPension() {
+        fetch('/retirement/claim', {
+            method: 'POST'
+        });
+    }
 
     document.getElementById('apply').addEventListener('click', () => {
-        window.location.href = '/kuchh to hai'
+        console.log('1')
+        fetch('/retirement/applyForRet', {
+            method: 'POST'
+        });
     })
+
+    const error = document.getElementById('message').innerText;
+
+    if (error) {
+        console.log('yes')
+        var notyf = new Notyf({
+            position: {
+                x: 'center',
+                y: 'bottom',
+            },
+        });
+        if (error == 'You have now been retired.' || 'Successfully Claimed') {
+            notyf.success(error);
+        } else {
+            notyf.error(error);
+
+        }
+    }
+
 </script>
 </html>

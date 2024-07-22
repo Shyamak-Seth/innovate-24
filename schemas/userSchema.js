@@ -52,6 +52,16 @@ const userSchema = new Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    pensionClaimed: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    retired: {
+        type: Boolean,
+        default: false,
+        required: true
     }
 })
 
