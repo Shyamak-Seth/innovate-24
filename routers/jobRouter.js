@@ -4,7 +4,11 @@ const router = require('express').Router(),
 
 router.get('/', async (req, res) => {
     const allJobs = await Job.find({})
-    res.render('jobs', {jobs: allJobs})
+    if (req.query.success) {
+        res.render('jobs', {jobs: allJobs, success: true})
+    } else {
+        res.render('jobs', {jobs: allJobs, success: false})      
+    }
 })
 
 router.get('/new', (req, res) => {
@@ -35,7 +39,7 @@ router.post('/apply/:id', async (req, res) => {
                 takenBy: req.user.email
             }
         })
-        res.redirect('/job')
+        res.redirect('/job?success=true')
     } catch (error) {
         console.log(error)
         res.redirect('/job')

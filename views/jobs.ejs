@@ -90,8 +90,6 @@
         }
         .subtext2 {
             font-size: 2vh;
-            margin-top: 3vh;
-            margin-bottom: 2.5vh;
         }
         .jobBox {
             box-shadow: 0px 0px 9px 3px rgba(0, 0, 0, 0.25);
@@ -137,6 +135,9 @@
 </head>
 <body>
     <%- include('partials/phone.ejs') %>
+    <% if (success) { %>
+        <p id="success">Accepted this Job!</p>
+    <% } %>
     <div id="phone" class="phone">
         <svg class="up-time" width="430" height="53" viewBox="0 0 430 53" fill="none" xmlns="http://www.w3.org/2000/svg" id="up-time">
             <rect opacity="0.35" x="362.351" y="22.5546" width="26.6231" height="13.3116" rx="4.21533" stroke="black" stroke-width="1.1093"/>
@@ -176,17 +177,16 @@
         </div>
         <h1 class="heading" id="heading">Job Marketplace</h1>
         <p class="subtext">Search jobs in a few clicks</p>
-        <p class="subtext2">JOBS NEAR YOU ></p>
-        <% for (let i = 0; i < jobs.length; i++) { %>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 3vh; margin-bottom: 2.5vh;">
+            <p class="subtext2">JOBS NEAR YOU ></p>
+            <button class="acceptBtn" style="line-height: 0; padding: 1vh;" onclick="window.location.href = '/job/new'">
+                <svg style="width: 1.4vh; height: 1.4vh;" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.762531 9.57842V6.80303H15.2905V9.57842H0.762531ZM6.62168 0.566983H9.46559V15.8145H6.62168V0.566983Z" fill="white"/>
+                    </svg>                    
+            </button>
+        </div>
+        <div style="margin-bottom: 18vh;"><% for (let i = 0; i < jobs.length; i++) { %>
             <% if (jobs[i].takenBy == 'none') { %>
-            <!-- <p><b><%= jobs[i].job %></b></p>
-            <p>Rs. <%= jobs[i].salary %> / hour</p>
-            <p><%= jobs[i].daysPerWeek %> days per week</p> 
-            <p><%= jobs[i].location %></p> 
-            <p>To start working, contact <%= jobs[i].for %></p>
-            <form action="/job/apply/<%= jobs[i].id %>" method="POST">
-                <input type="submit" value="Lock This Job">
-            </form><br><br> -->
             <div class="jobBox">
                 <div>
                     <p class="jobHeading"><%= jobs[i].job %></p>
@@ -217,7 +217,7 @@
                 </form>
             </div>
             <% } %> 
-        <% } %>
+        <% } %></div>
         <svg class="down-bar" width="430" height="34" viewBox="0 0 430 34" fill="none" xmlns="http://www.w3.org/2000/svg" id="down-bar">
             <rect x="139" y="21" width="152" height="5" rx="2.5" fill="black" fill-opacity="0.6"/>
             </svg>
@@ -240,6 +240,16 @@
             document.getElementById('heading').style.marginTop = '1vh'
             document.getElementById('down-bar').style.position = 'fixed'
             document.getElementById('navbar').style.position = 'fixed'
+        }
+        const successElement = document.getElementById('success')
+        if (success) {
+            var notyf = new Notyf({
+                position: {
+                    x: 'center',
+                    y: 'bottom',
+                },
+            });
+            notyf.success(successElement.innerHTML);
         }
     }
 </script>
