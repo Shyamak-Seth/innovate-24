@@ -18,6 +18,7 @@ const indexRouter = require('./routers/indexRouter'),
     retirementRouter = require('./routers/retirementRouter'),
     loyaltyRouter = require('./routers/loyaltyRouter'),
     perksRouter = require('./routers/perksRouter'),
+    profileRouter = require('./routers/profileRouter'),
     jobRouter = require('./routers/jobRouter')
 
 app.use(express.static('public'))
@@ -45,5 +46,14 @@ app.use('/level', ensureAuthenticated, loyaltyRouter)
 app.use('/retirement', ensureAuthenticated, retirementRouter)
 app.use('/perks', ensureAuthenticated, perksRouter)
 app.use('/job', ensureAuthenticated, jobRouter)
+app.use('/profile', ensureAuthenticated, profileRouter)
+
+app.get('/logout', (req, res) => {
+    req.logout((err) => {
+        if (err) console.log(err)
+        return res.redirect('/login')
+    });
+})
+
 
 app.listen(PORT, console.log(`Server listening on port ${PORT}`))
