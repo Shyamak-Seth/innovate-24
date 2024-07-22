@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <title>Loyalty</title>
     <style>
+        .navbar {
+            width: 38vh;
+            height: 10vh;
+            flex-shrink: 0;
+
+            border-radius: 88px;
+            background: #FFF;
+            box-shadow: 0px 0px 30.8px 0px rgba(0, 0, 0, 0.25);
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+
+            align-self: center;
+            position: absolute;
+            bottom: 5vh;
+        }
+        .navbar > svg {
+            width: 3vh;
+            aspect-ratio: inherit;
+        }
+
         .up-time {
             width: 100%;
             position: absolute;
@@ -21,197 +43,60 @@
         }
         .heading {
             color: #000;
-            font-size: 1.5rem;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            letter-spacing: -0.98px;
-        }
-        .loyalty {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            
-            position: relative;
-            
-            margin-top: 0vh;
-            
-            padding-top: 10vh;
-        }
-        .loyaltyImage {
-            position: absolute;
-            top: 0;
-            margin-left: -1.5vh;
-            width: 100%;
-        }
-
-        .loyalty > p {
-            color: rgba(0, 0, 0, 0.70);
             font-family: Outfit;
-            font-size: 0.7rem;
+            font-size: 2rem;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
-            letter-spacing: -0.504px;
+            letter-spacing: -2.393px;
+            text-align: center;
         }
-        .boxes {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-
-            margin-top: 5vh;
-        }
-        .box {
-            width: 12vh;
-            height: 12vh;
-            flex-shrink: 0;
-            border-radius: 6px;
-            background: #fff;
-            filter: drop-shadow(0px 0px 7.8px rgba(0, 0, 0, 0.25));
-
-            padding: 1vh;
-        }
-
-        .box > h1 {
-            color: #000;
-            font-size: 5vh;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            letter-spacing: -1.119px;
-        }
-
-        .box > p {
-            color: #DC4B52;
-            font-size: 1.7vh;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            letter-spacing: -0.572px;
-        }
-        .harvestActions {
-            display: flex;
-            flex-direction: column;
-
-            margin-top: 3vh;
-            gap: 2vh;
-        }
-        .harvestActions > p {
-            color: rgba(0, 0, 0, 0.70);
-            font-size: 0.7rem;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            letter-spacing: -0.422px;
-        }
-        .buttons {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-
-            width: 100%;
-        }
-        .buttons > button {
-            width: 18vh;
-            height: 8.1vh;
-            flex-shrink: 0;
-            border-radius: 49px;
-
-            border: none;
-            outline: none;
-
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4vh;
-            cursor: pointer;
-        }
-        .buttons > button > svg {
-            width: 2.3vh;
-            height: 2.3vh;
-            flex-shrink: 0;
-        }
-        .buttons > button > p {
-            color: #FFF;
-            font-size: 1rem;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            letter-spacing: -0.691px;
-        }
-        .events {
-            display: flex;
-            flex-direction: column;
-
-            margin-top: 3vh;
-            gap: 2vh;
-        }
-        .events > p {
-            color: rgba(0, 0, 0, 0.70);
-            font-size: 0.7rem;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            letter-spacing: -0.422px;
-        }
-        .event {
-            width: 100%;
-            height: 18vh;
-            flex-shrink: 0;
-
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-end;
-
-            padding: 2vh;
-            border-radius: 10px;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 17.29%, #000 95.86%), url('https://cdn.discordapp.com/attachments/1168887401884680215/1264655437039538380/image.png?ex=669ea9a8&is=669d5828&hm=4084c65a239e351ae2fb1c7efb5c3246e72545f17beabd7e587af71994f891c4&') lightgray 0px -12.816px / 100% 133.844% no-repeat;
-        }
-        .event > h1 {
-            color: #FFF;
-            font-size: 1.3rem;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            letter-spacing: -0.771px;
-        }
-        .event > p {
-            color: #466EFF;
+        .name {
+            margin-top: 2vh;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.60);
             font-family: Outfit;
             font-size: 0.8rem;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
-            letter-spacing: -0.341px;
+            letter-spacing: -0.677px;
         }
-
-        .navbar {
-            width: 38vh;
-            height: 10vh;
-            flex-shrink: 0;
-
-            border-radius: 88px;
-            background: #FFF;
-            box-shadow: 0px 0px 30.8px 0px rgba(0, 0, 0, 0.25);
-
+        .loyaltyContainer {
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-evenly;
-            align-self: center;
-            
-            position: absolute;
-            bottom: 5vh;
+            justify-content: center;
+            gap: 3vh;
         }
-        .navbar > svg {
-            width: 3vh;
-            aspect-ratio: inherit;
+        .percentage {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+        }
+        .percentage > svg {
+            position: absolute;
+            top: 0;
+            /* left: 0; */
+            height: 100%;
+        }
+        .percentage > h1 {
+            color: #000;
+            font-family: Outfit;
+            font-size: 0.9rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+        .image {
+            width: 40vh;
+            aspect-ratio: initial;
+            align-items: center;
+            margin: 3vh auto;
         }
     </style>
 </head>
@@ -228,73 +113,26 @@
             <rect x="152.5" y="11.33" width="125" height="36.67" rx="18.335" fill="black"/>
             </svg>
 
+        <p class="name">Mr. <%= user.fname %></p>
 
-        <h1 class="heading">Welcome, <%= user.fname %>! 👋</h1>
+        <div class="loyaltyContainer">
+            <h1 class="heading"><%= user.loyaltyLevel %></h1>
+            <div class="percentage">
+                <svg xmlns="http://www.w3.org/2000/svg" width="63" height="64" viewBox="0 0 63 64" fill="none">
+                    <path d="M62.6334 31.8606C62.6334 49.0663 48.6855 63.0142 31.4798 63.0142C14.2742 63.0142 0.326294 49.0663 0.326294 31.8606C0.326294 14.655 14.2742 0.707092 31.4798 0.707092C48.6855 0.707092 62.6334 14.655 62.6334 31.8606ZM9.67236 31.8606C9.67236 43.9046 19.4359 53.6681 31.4798 53.6681C43.5238 53.6681 53.2873 43.9046 53.2873 31.8606C53.2873 19.8167 43.5238 10.0532 31.4798 10.0532C19.4359 10.0532 9.67236 19.8167 9.67236 31.8606Z" fill="url(#paint0_linear_83_941)"/>
+                    <defs>
+                      <linearGradient id="paint0_linear_83_941" x1="62.6334" y1="0.7071" x2="0.326301" y2="63.0142" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#EF9D22"/>
+                        <stop offset="1" stop-color="#C2801E"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
 
-        <div id="loyalty" class="loyalty">
-            <% if (user.loyaltyLevel == 'Bronze') { %>
-                <img class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264652436681789560/image.png?ex=669ea6dd&is=669d555d&hm=f4c5038c42a92f609b54da3320b2f676e00e84dbe57bdf1c5e9a590fcab66b7f&" alt="">
-            <% } else if (user.loyaltyLevel == 'Silver') { %>
-                <img class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264648847930429460/image.png?ex=669ea385&is=669d5205&hm=dc56de9aba31df9dfed4fa2410c2c5a42964354d35e01b0dd1f5f4c6f9785e3b&" alt="">
-            <% } else { %>
-                <img class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264648847930429460/image.png?ex=669ea385&is=669d5205&hm=dc56de9aba31df9dfed4fa2410c2c5a42964354d35e01b0dd1f5f4c6f9785e3b&" alt="">
-            <% } %>
-
-            <p>YOUR CURRENT TIER></p>
-            <h1><%= user.loyaltyLevel %></h1>
-        </div>
-
-        <div id="boxes" class="boxes">
-            <div class="box">
-                <h1><%= user.productionDuringYear %></h1>
-                <p style="color: #466EFF;">kg</p>
-            </div>
-            <div class="box">
-                <h1><%= user.points %></h1>
-                <p style="color: #DC4B52;">points</p>
-            </div>
-            <div class="box">
-                <h1><%= user.productionDuringYear %></h1>
-                <p style="color: #01B764;">earned</p>
+                  <h1>69%</h1>
             </div>
         </div>
 
-        <div class="harvestActions">
-            <p>HARVEST ACTIONS</p>
-
-            <div class="buttons">
-                <button style="background: #01B764;">
-                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="11.3868" y="6.8994" width="7.64835" height="2.71518" rx="1.15495" fill="white"/>
-                        <rect x="12.4124" y="3.44969" width="7.64835" height="2.71518" rx="1.15495" fill="white"/>
-                        <rect x="12.0705" width="7.64835" height="2.71518" rx="1.15495" fill="white"/>
-                        <path d="M0 10.2769C0 9.95799 0.258544 9.69945 0.577474 9.69945H4.1016V18.6276H0.577474C0.258544 18.6276 0 18.369 0 18.0501V10.2769Z" fill="white"/>
-                        <path d="M5.50238 10.3527H10.5259V19.2808H7.74481H5.50238V10.3527Z" fill="white"/>
-                        <path d="M7.60954 14.443L10.5259 10.3527L14.6626 13.3021C15.4416 13.8575 15.6229 14.9393 15.0674 15.7184L13.1568 18.3981L7.60954 14.443Z" fill="white"/>
-                        <path d="M7.74481 20.7092V19.2808L7.74481 16.0921L18.4178 16.0921C19.6928 16.0921 20.7263 17.1257 20.7263 18.4006C20.7263 19.6756 19.6928 20.7092 18.4178 20.7092L7.74481 20.7092Z" fill="white"/>
-                        <path d="M7.74481 19.2808H5.50238L7.74481 20.7092V19.2808Z" fill="white"/>
-                        </svg>
-                        <p>Sell</p>
-                </button>
-                <button style="background: #466EFF;">
-                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.1226 21.295V14.295C17.1226 14.0298 17.0172 13.7754 16.8297 13.5879C16.6421 13.4003 16.3878 13.295 16.1226 13.295H8.12256C7.85734 13.295 7.60299 13.4003 7.41545 13.5879C7.22792 13.7754 7.12256 14.0298 7.12256 14.295V21.295H5.12256C4.59213 21.295 4.08342 21.0843 3.70835 20.7092C3.33327 20.3341 3.12256 19.8254 3.12256 19.295V5.29498C3.12256 4.76455 3.33327 4.25584 3.70835 3.88077C4.08342 3.5057 4.59213 3.29498 5.12256 3.29498H16.3426C16.84 3.29504 17.3195 3.48043 17.6876 3.81498L20.4676 6.34198C20.6738 6.52942 20.8387 6.7579 20.9515 7.01277C21.0643 7.26764 21.1225 7.54327 21.1226 7.82198V19.295C21.1226 19.8254 20.9118 20.3341 20.5368 20.7092C20.1617 21.0843 19.653 21.295 19.1226 21.295H17.1226ZM16.1226 6.29498C15.8573 6.29498 15.603 6.40034 15.4155 6.58788C15.2279 6.77541 15.1226 7.02977 15.1226 7.29498V10.295C15.1226 10.5602 15.2279 10.8146 15.4155 11.0021C15.603 11.1896 15.8573 11.295 16.1226 11.295C16.3878 11.295 16.6421 11.1896 16.8297 11.0021C17.0172 10.8146 17.1226 10.5602 17.1226 10.295V7.29498C17.1226 7.02977 17.0172 6.77541 16.8297 6.58788C16.6421 6.40034 16.3878 6.29498 16.1226 6.29498ZM8.12256 6.29498C7.85734 6.29498 7.60299 6.40034 7.41545 6.58788C7.22792 6.77541 7.12256 7.02977 7.12256 7.29498V10.295C7.12256 10.5602 7.22792 10.8146 7.41545 11.0021C7.60299 11.1896 7.85734 11.295 8.12256 11.295H13.1226C13.3878 11.295 13.6421 11.1896 13.8297 11.0021C14.0172 10.8146 14.1226 10.5602 14.1226 10.295V7.29498C14.1226 7.02977 14.0172 6.77541 13.8297 6.58788C13.6421 6.40034 13.3878 6.29498 13.1226 6.29498H8.12256ZM9.12256 15.295H15.1226V19.295H9.12256V15.295ZM9.12256 10.295V7.29498H12.1226V10.295H9.12256Z" fill="#FFFEFE"/>
-                        </svg>
-                        
-                        <p>Track</p>
-                </button>
-            </div>
-        </div>
-
-        <div class="events">
-            <p>UPCOMING EVENTS AND WORKSHOPS</p>
-
-            <div class="event">
-                <h1>Farm Security Essentials</h1>
-                <p>Arshraj Singh Dhillon</p>
-            </div>
-        </div>
-
+        <img class="image" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264833242851446795/image.png?ex=669f4f40&is=669dfdc0&hm=4748dd1fcf4b3179ce5c7682f06763a9d5bde19be94dbd776f94c9bec64b0bf8&" alt="">
 
         <div class="navbar">
             <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -322,7 +160,6 @@
         <svg class="down-bar" width="430" height="34" viewBox="0 0 430 34" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="139" y="21" width="152" height="5" rx="2.5" fill="black" fill-opacity="0.6"/>
             </svg>
-
     </div>
 </body>
 <script>
@@ -333,11 +170,9 @@
     if (isMobileDevice()) {
         // console.log("hello");
         const phone = document.getElementById('phone')
-        const boxes = document.getElementById('boxes')
         phone.style.width = '100vw'
         phone.style.height = '100vh'
         phone.style.borderRadius = '0'
-        boxes.style.marginTop = '7vh'
         document.getElementById('up-time').style.display = 'none'
         document.getElementById('mainForm').style.marginTop = '-5vh'
     }
@@ -345,7 +180,7 @@
     const loyalty = document.getElementById('loyalty')
 
     loyalty.addEventListener('click', () => {
-        window.location.href = 'loyalty'
+        window.location.href = 'bhenchod'
     })
 
 
@@ -363,4 +198,5 @@
         notyf.error(error);
     }
 </script>
+
 </html>
