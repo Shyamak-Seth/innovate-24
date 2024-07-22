@@ -15,9 +15,8 @@
         * {z-index: 2}
         .down-bar {
             width: 100%;
-            position: absolute; 
+            position: fixed; 
             bottom: 0;
-            margin-left: -3.5vh;
         }
         .heading {
             color: #000;
@@ -202,7 +201,7 @@
 
             padding: 2vh;
             border-radius: 10px;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 17.29%, #000 95.86%), url('https://cdn.discordapp.com/attachments/1168887401884680215/1264655437039538380/image.png?ex=669ea9a8&is=669d5828&hm=4084c65a239e351ae2fb1c7efb5c3246e72545f17beabd7e587af71994f891c4&') lightgray 0px -12.816px / 100% 133.844% no-repeat;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 17.29%, #000 95.86%), url('homeGradient.png') lightgray 0px -12.816px / 100% 133.844% no-repeat;
         }
         .event > h1 {
             color: #FFF;
@@ -237,7 +236,7 @@
             justify-content: space-evenly;
             align-self: center;
             
-            position: absolute;
+            position: fixed;
             bottom: 5vh;
         }
         .navbar > svg {
@@ -323,7 +322,7 @@
             </div>
         </div>
 
-        <div class="events">
+        <div class="events" style="margin-bottom: 18vh;">
             <p>UPCOMING EVENTS AND WORKSHOPS</p>
 
             <div class="event">
@@ -355,10 +354,6 @@
                 </svg>                    
                     
         </div>
-
-        <svg class="down-bar" width="430" height="34" viewBox="0 0 430 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="139" y="21" width="152" height="5" rx="2.5" fill="black" fill-opacity="0.6"/>
-            </svg>
 
     </div>
 </body>
