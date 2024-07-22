@@ -52,7 +52,7 @@ router.post('/claim', async (req, res) => {
     
     if (req.user.pensionClaimed) {
         // return res.render('retirement', {user: req.user, applyForRet: false, pension: myPension, message: "You have already claimed your pension.", pensionClam: false})
-        return res.end('You have already claimed your pension')
+        return res.end({success: false, message: 'You have already claimed your pension'})
     }
     await userSchema.findOneAndUpdate({email: req.user.email}, {
         $set: {
@@ -60,13 +60,13 @@ router.post('/claim', async (req, res) => {
         }
     })
     // res.render('retirement', {user: req.user, applyForRet: false, pension: myPension, message: 'Successfully Claimed', pensionClaim: true})
-    return res.end('Successfully Claimed')
+    return res.json({success: true, message:'Successfully Claimed'})
 })
 
 router.post('/applyForRet', async (req,res) => {
 
     if (req.user.age < 60) {
-        return res.end('You cannot apply for retirement as you are under 60 years.')
+        return res.json({success: false, message: 'You cannot apply for retirement as you are under 60 years.'})
     }
 
 
@@ -88,7 +88,7 @@ router.post('/applyForRet', async (req,res) => {
     })
 
     // res.render('retirement', {user: req.user, applyForRet: false, pension: myPension, message: 'You have now been retired.', pensionClaim: true})
-    return res.end('You have now been retired.')
+    return res.json({success: true, message: 'You have now been retired.'})
 
 })
 

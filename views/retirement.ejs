@@ -271,36 +271,43 @@
         document.getElementById('up-time').style.display = 'none'
     }
 
-    function claimPension() {
-        fetch('/retirement/claim', {
+    async function claimPension() {
+        const rawResp = await fetch('/retirement/claim', {
             method: 'POST'
         });
-    }
-
-    document.getElementById('apply').addEventListener('click', () => {
-        console.log('1')
-        fetch('/retirement/applyForRet', {
-            method: 'POST'
-        });
-    })
-
-    const error = document.getElementById('message').innerText;
-
-    if (error) {
-        console.log('yes')
+        const respResolved = await rawResp.json()
         var notyf = new Notyf({
             position: {
                 x: 'center',
                 y: 'bottom',
             },
         });
-        if (error == 'You have now been retired.' || 'Successfully Claimed') {
-            notyf.success(error);
+        if (respResolved.success) {
+            notyf.success(respResolved.message)
         } else {
-            notyf.error(error);
-
+            notyf.error(respResolved.message)
         }
     }
+    
+    document.getElementById('apply').addEventListener('click', async () => {
+        console.log('1')
+        const rawResp2 = await fetch('/retirement/applyForRet', {
+            method: 'POST'
+        });
+        const respResolved2 = await rawResp2.json()
+        var notyf = new Notyf({
+            position: {
+                x: 'center',
+                y: 'bottom',
+            },
+        });
+        if (respResolved2.success) {
+            notyf.success(respResolved2.message)
+        } else {
+            notyf.error(respResolved2.message)
+        }
+    })
+
 
 </script>
 </html>
