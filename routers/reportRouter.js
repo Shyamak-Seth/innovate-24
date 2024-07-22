@@ -31,7 +31,8 @@ router.post('/', async (req, res) => {
             body: body
         })
         await newReport.save()
-        res.redirect('/report/' + newReport.id)      
+        // res.redirect('/report/' + newReport.id)
+        res.render('report', {message: 'Reported Successfully'})      
     } catch (error) {
         res.end('There was an error. Please try again.')
     }
