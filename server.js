@@ -21,6 +21,7 @@ const indexRouter = require('./routers/indexRouter'),
     jobRouter = require('./routers/jobRouter'),
     kycRouter = require('./routers/kycRouter'),
     verifyRouter = require('./routers/verifyRouter'),
+    eventRouter = require('./routers/eventRouter'),
     profileRouter = require('./routers/profileRouter')
 
 app.use(express.static('public'))
@@ -51,6 +52,7 @@ app.use('/job', ensureAuthenticated, ensureKyc, ensureVerified, jobRouter)
 app.use('/kyc', ensureAuthenticated, kycRouter)
 app.use('/verify', ensureAuthenticated, ensureKyc, verifyRouter)
 app.use('/profile', ensureAuthenticated, profileRouter)
+app.use('/events', ensureAuthenticated, eventRouter)
 app.get('/logout', (req, res) => {
     req.logout((err) => {
         if (err) console.log(err)
