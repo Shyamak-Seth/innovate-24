@@ -262,7 +262,7 @@
 
         <h1 class="heading">Welcome, <%= user.fname %>! 👋</h1>
 
-        <div id="loyalty" class="loyalty">
+        <div id="loyalty" class="loyalty" onclick="window.location.href = '/loyalty'">
             <div class="chartContainer" id="chart">
                 <div class="chartColored" id="chartColored"></div>
                 <div class="chartBlank"></div>
@@ -362,6 +362,7 @@
         return window.innerWidth <= 800;
     }
 
+    window.onload = () => {
     if (isMobileDevice()) {
         // console.log("hello");
         const phone = document.getElementById('phone')
@@ -371,19 +372,7 @@
         phone.style.borderRadius = '0'
         boxes.style.marginTop = '7vh'
         document.getElementById('up-time').style.display = 'none'
-        const loyalty = document.getElementById('loyaltyImg')
-    
-        loyalty.addEventListener('click', () => {
-            console.log('bhai')
-            window.location.href = '/level'
-        })
     }
-    const loyalty = document.getElementById('loyalty')
-
-    loyalty.addEventListener('click', () => {
-        window.location.href = '/level'
-    })
-    window.onload = () => {
         const currentLevel = "<%= user.loyaltyLevel %>"
         var chartColor = '#ef9d22'
         if (currentLevel == 'Silver') {
