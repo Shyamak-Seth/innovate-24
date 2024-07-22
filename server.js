@@ -20,7 +20,8 @@ const indexRouter = require('./routers/indexRouter'),
     perksRouter = require('./routers/perksRouter'),
     jobRouter = require('./routers/jobRouter'),
     kycRouter = require('./routers/kycRouter'),
-    verifyRouter = require('./routers/verifyRouter')
+    verifyRouter = require('./routers/verifyRouter'),
+    profileRouter = require('./routers/profileRouter')
 
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
@@ -49,5 +50,12 @@ app.use('/perks', ensureAuthenticated, ensureKyc, ensureVerified, perksRouter)
 app.use('/job', ensureAuthenticated, ensureKyc, ensureVerified, jobRouter)
 app.use('/kyc', ensureAuthenticated, kycRouter)
 app.use('/verify', ensureAuthenticated, ensureKyc, verifyRouter)
+app.use('/profile', ensureAuthenticated, profileRouter)
+app.get('/logout', (req, res) => {
+    req.logout((err) => {
+        if (err) console.log(err)
+        return res.redirect('/login')
+    });
+})
 
 app.listen(PORT, console.log(`Server listening on port ${PORT}`))
