@@ -44,6 +44,7 @@
             top: 0;
             margin-left: -1.5vh;
             width: 100%;
+            z-index: 10000000;
         }
 
         .loyalty > p {
@@ -233,11 +234,11 @@
 
         <div id="loyalty" class="loyalty">
             <% if (user.loyaltyLevel == 'Bronze') { %>
-                <img class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264652436681789560/image.png?ex=669ea6dd&is=669d555d&hm=f4c5038c42a92f609b54da3320b2f676e00e84dbe57bdf1c5e9a590fcab66b7f&" alt="">
+                <img id="loyaltyImg" class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264652436681789560/image.png?ex=669ea6dd&is=669d555d&hm=f4c5038c42a92f609b54da3320b2f676e00e84dbe57bdf1c5e9a590fcab66b7f&" alt="">
             <% } else if (user.loyaltyLevel == 'Silver') { %>
-                <img class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264648847930429460/image.png?ex=669ea385&is=669d5205&hm=dc56de9aba31df9dfed4fa2410c2c5a42964354d35e01b0dd1f5f4c6f9785e3b&" alt="">
+                <img id="loyaltyImg" class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264648847930429460/image.png?ex=669ea385&is=669d5205&hm=dc56de9aba31df9dfed4fa2410c2c5a42964354d35e01b0dd1f5f4c6f9785e3b&" alt="">
             <% } else { %>
-                <img class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264648847930429460/image.png?ex=669ea385&is=669d5205&hm=dc56de9aba31df9dfed4fa2410c2c5a42964354d35e01b0dd1f5f4c6f9785e3b&" alt="">
+                <img id="loyaltyImg" class="loyaltyImage" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264648847930429460/image.png?ex=669ea385&is=669d5205&hm=dc56de9aba31df9dfed4fa2410c2c5a42964354d35e01b0dd1f5f4c6f9785e3b&" alt="">
             <% } %>
 
             <p>YOUR CURRENT TIER></p>
@@ -327,7 +328,7 @@
 </body>
 <script>
     function isMobileDevice() {
-        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        return window.innerWidth <= 800;
     }
 
     if (isMobileDevice()) {
@@ -339,28 +340,19 @@
         phone.style.borderRadius = '0'
         boxes.style.marginTop = '7vh'
         document.getElementById('up-time').style.display = 'none'
-        document.getElementById('mainForm').style.marginTop = '-5vh'
+        const loyalty = document.getElementById('loyaltyImg')
+    
+        loyalty.addEventListener('click', () => {
+            console.log('bhai')
+            window.location.href = '/level'
+        })
     }
-
     const loyalty = document.getElementById('loyalty')
 
     loyalty.addEventListener('click', () => {
-        window.location.href = 'loyalty'
+        window.location.href = '/level'
     })
 
 
-
-    const error = document.getElementById('error').innerText;
-
-    if (error) {
-        console.log('yes')
-        var notyf = new Notyf({
-            position: {
-                x: 'center',
-                y: 'bottom',
-            },
-        });
-        notyf.error(error);
-    }
 </script>
 </html>
