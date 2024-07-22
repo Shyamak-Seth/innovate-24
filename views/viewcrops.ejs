@@ -6,9 +6,10 @@
     <title>View Your Crops</title>
 </head>
 <body>
-    <p>Track crops:</p>
+    <p>Your Crops:</p>
     <% for (let i = 0; i < crops.length; i++) { %>
         <p><a href="/crop/view/<%= crops[i] %>"><%= crops[i].toUpperCase() %></a></p>
-    <% } %>
+    <% } %><br>
+    <button onclick="window.location.href = '/crop/new'">Track new crop</button>
 </body>
 </html>

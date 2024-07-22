@@ -74,6 +74,7 @@ router.post('/harvest', async (req, res) => {
         for (let j = 0; j < foundUser.crops.length; j++) {
             currentCrops.push(foundUser.crops[j].name)
         }
+        const currentCropsFull = foundUser.crops
         const pointsConfig = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'pointsConfig.json'), {
             encoding: 'utf8'
         }))
@@ -130,7 +131,9 @@ router.post('/harvest', async (req, res) => {
                 await User.updateOne({email: req.user.email}, {
                     $set: {
                         points: totalPoints,
-                        loyaltyLevel: loyaltyLevel
+                        loyaltyLevel: loyaltyLevel,
+                        production: foundUser.production + Number(quantity),
+                        money: foundUser.money + (pointsConfig[i].price * Number(quantity))
                     }
                 })
                 return res.redirect('/')

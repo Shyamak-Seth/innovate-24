@@ -23,11 +23,6 @@ const userSchema = new Schema({
         required: true,
         default: 0
     },
-    productionDuringYear: {
-        type: Number,
-        required: true,
-        default: 0
-    },
     crops: {
         type: Array,
         required: true,
@@ -44,6 +39,11 @@ const userSchema = new Schema({
         default: false
     },
     age: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    money: {
         type: Number,
         required: true,
         default: 0

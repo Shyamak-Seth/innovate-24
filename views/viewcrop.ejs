@@ -8,6 +8,6 @@
 <body>
     <h2><%= crop.name.toUpperCase() %></h2>
     <p>Starting Date: <%= new Date(crop.date).toLocaleString('en-IN') %></p>
-    <p>Current Harvest: <%= crop.harvest %> kg</p>
+    <button onclick="window.location.href = '/crop/harvest'">Sell This</button>
 </body>
 </html>
