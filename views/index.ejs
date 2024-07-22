@@ -260,7 +260,7 @@
                 <p style="color: #DC4B52;">points</p>
             </div>
             <div class="box">
-                <% if (user.production < 1000) { %>
+                <% if (user.money < 1000) { %>
                 <h1><%= user.money %></h1>
                 <% } else { %>
                 <h1><%= Math.round(user.money / 1000) %>k</h1>
