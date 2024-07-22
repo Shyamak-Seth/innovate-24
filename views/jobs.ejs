@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs</title>
+</head>
+<body>
+    <a href="/job/new">Make a Job Requirement</a><br><br>
+    <% for (let i = 0; i < jobs.length; i++) { %>
+        <% if (jobs[i].takenBy == 'none') { %>
+        <p><b><%= jobs[i].job %></b></p>
+        <p>Rs. <%= jobs[i].salary %> / hour</p>
+        <p><%= jobs[i].daysPerWeek %> days per week</p> 
+        <p><%= jobs[i].location %></p> 
+        <p>To start working, contact <%= jobs[i].for %></p>
+        <form action="/job/apply/<%= jobs[i].id %>" method="POST">
+            <input type="submit" value="Lock This Job">
+        </form><br><br>
+        <% } %> 
+    <% } %>
+</body>
+</html>

@@ -16,7 +16,12 @@ const userSchema = new Schema({
         required: true,
         default: 0
     },
-    location: reqString
+    location: reqString,
+    takenBy: {
+        type: String,
+        required: true,
+        default: 'none'
+    }
 })
 
 module.exports = mongoose.model("Job", userSchema)

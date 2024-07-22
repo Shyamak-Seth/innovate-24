@@ -16,7 +16,8 @@ const indexRouter = require('./routers/indexRouter'),
     reportRouter = require('./routers/reportRouter'),
     cropRouter = require('./routers/cropRouter'),
     loyaltyRouter = require('./routers/loyaltyRouter'),
-    perksRouter = require('./routers/perksRouter')
+    perksRouter = require('./routers/perksRouter'),
+    jobRouter = require('./routers/jobRouter')
 
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
@@ -41,5 +42,6 @@ app.use('/report', ensureAuthenticated, reportRouter)
 app.use('/crop', ensureAuthenticated, cropRouter)
 app.use('/level', ensureAuthenticated, loyaltyRouter)
 app.use('/perks', ensureAuthenticated, perksRouter)
+app.use('/job', ensureAuthenticated, jobRouter)
 
 app.listen(PORT, console.log(`Server listening on port ${PORT}`))
