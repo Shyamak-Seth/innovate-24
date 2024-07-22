@@ -9,7 +9,8 @@ router.get('/new', (req, res) => {
 
 router.post('/new', async (req, res) => {
     try {
-        const {crop, quantity} = req.body
+        const {crop, quantity, harvestName} = req.body
+        if (!crop || !harvestName || !quantity) return res.render('track', {error: "Please enter all the details!"})
         const foundUser = await User.findOne({email: req.user.email})
         const currentCrops = foundUser.crops
         for (let i = 0; i < foundUser.crops.length; i++) {
@@ -54,6 +55,7 @@ router.post('/harvest', async (req, res) => {
             encoding: 'utf8'
         }))
         const {crop, quantity} = req.body
+        if (!crop || !quantity) return res.render('harvest', {crops: currentCrops, error: 'Please enter all the values!'})
         var totalPoints = 0
         for (let i = 0; i < pointsConfig.length; i++) {
             if (pointsConfig[i].crop == crop) {
@@ -119,6 +121,13 @@ router.post('/harvest', async (req, res) => {
         console.log(error)
         res.redirect('/crop/harvest')
     }
+})
+
+router.post('/getEstimatedPrice', async (req, res) => {
+    const pointsConfig = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'pointsConfig.json'), {
+        encoding: 'utf8'
+    }))
+
 })
 
 module.exports = router
