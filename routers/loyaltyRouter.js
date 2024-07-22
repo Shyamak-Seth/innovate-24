@@ -11,10 +11,15 @@ router.get('/', async (req, res) => {
         Silver: 1500,
         Gold: 3000
     }
+    const previousConfig = {
+        Bronze: 0,
+        Silver: 500,
+        Gold: 1500
+    }
     if (userLevel == 'Platinum') {
         userPercentage = 100
     } else {
-        userPercentage = Math.round((userPoints / levelsConfig[userLevel]) * 100)
+        userPercentage = Math.round(((userPoints - previousConfig[userLevel]) / (levelsConfig[userLevel] - previousConfig[userLevel])) * 100)
     }
     res.render('level', {user: req.user, level: userLevel, percentage: `${userPercentage}%`})
 
