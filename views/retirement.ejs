@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level</title>
+    <title>Retirement</title>
     <style>
         .navbar {
             width: 38vh;
@@ -51,59 +51,113 @@
             letter-spacing: -2.393px;
             text-align: center;
         }
-        .name {
-            margin-top: 2vh;
-            text-align: center;
-            color: rgba(0, 0, 0, 0.60);
-            font-family: Outfit;
-            font-size: 0.9rem;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            letter-spacing: -0.677px;
-        }
-        .loyaltyContainer {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 3vh;
-        }
-        .percentage {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            position: relative;
-        }
-        .percentage > svg {
-            position: absolute;
-            top: 0;
-            /* left: 0; */
-            height: 100%;
-        }
-        .percentage > h1 {
-            color: #000;
-            font-family: Outfit;
-            font-size: 0.9rem;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-        }
-        .image {
-            width: 40vh;
-            aspect-ratio: initial;
-            align-items: center;
-            margin: 3vh auto;
-            margin-left: -1vh;
-        }
         .back {
             position: absolute;
             top: 7vh;
             left: 5vh;
             z-index: 1000;
+        }
+        .info {
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 13vh;
+            gap: 1vh;
+        }
+        .name {
+            color: rgba(0, 0, 0, 0.60);
+            font-family: Outfit;
+            font-size: 0.8rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: -0.8px;
+        }
+        span {
+            color: #000;
+            font-family: Outfit;
+            font-size: 2.4rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+        p {
+            color: rgba(0, 0, 0, 0.60);
+            font-family: Outfit;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+        button {
+            border-radius: 30.345px;
+            background: #D9D9D9;
+            width: 27vh;
+            height: 8vh;
+            flex-shrink: 0;
+            outline: none;
+            border: none;
+        }
+        button > h1 {
+            color: #000;
+            text-align: center;
+            font-family: Outfit;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: -0.517px;
+        }
+        button > p {
+            color: rgba(0, 0, 0, 0.70);
+            text-align: center;
+            font-family: Outfit;
+            font-size: 0.5rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: -0.153px;
+        }
+        .button {
+            margin-top: 10vh;
+            align-self: center;
+            width: 40vh;
+            height: 10vh;
+            flex-shrink: 0;
+            border-radius: 10px;
+            background: #01B764;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .left {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            align-items: center;
+            gap: 1vh;
+        }
+        .left > p {
+            color: #FFF;
+            font-family: Outfit;
+            font-size: 0.8rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: -0.545px;
+        }
+        .left > svg {
+            width: 1.3rem;
+            aspect-ratio: 1;
+        }
+        .button > svg {
+            width: 1.3rem;
+            aspect-ratio: 1;
         }
     </style>
 </head>
@@ -119,71 +173,32 @@
             <path d="M62.1607 36.3076C61.1529 36.3076 60.2887 36.0381 59.568 35.499C58.8473 34.96 58.2936 34.1953 57.9068 33.2051C57.5201 32.209 57.3268 31.0283 57.3268 29.6631V29.6455C57.3268 28.2803 57.5201 27.1025 57.9068 26.1123C58.2936 25.1221 58.8473 24.3574 59.568 23.8184C60.2887 23.2793 61.1529 23.0098 62.1607 23.0098C63.1686 23.0098 64.0328 23.2793 64.7535 23.8184C65.4742 24.3574 66.0279 25.1221 66.4146 26.1123C66.8072 27.1025 67.0035 28.2803 67.0035 29.6455V29.6631C67.0035 31.0283 66.8072 32.209 66.4146 33.2051C66.0279 34.1953 65.4742 34.96 64.7535 35.499C64.0328 36.0381 63.1686 36.3076 62.1607 36.3076ZM62.1607 34.4795C62.6998 34.4795 63.1598 34.2861 63.5406 33.8994C63.9215 33.5127 64.2115 32.9619 64.4107 32.2471C64.6158 31.5264 64.7184 30.665 64.7184 29.6631V29.6455C64.7184 28.6436 64.6158 27.7852 64.4107 27.0703C64.2115 26.3555 63.9215 25.8076 63.5406 25.4268C63.1598 25.04 62.6998 24.8467 62.1607 24.8467C61.6217 24.8467 61.1617 25.04 60.7809 25.4268C60.4 25.8076 60.107 26.3555 59.902 27.0703C59.7027 27.7852 59.6031 28.6436 59.6031 29.6455V29.6631C59.6031 30.665 59.7027 31.5264 59.902 32.2471C60.107 32.9619 60.4 33.5127 60.7809 33.8994C61.1617 34.2861 61.6217 34.4795 62.1607 34.4795ZM73.4969 23.001C74.1707 23.001 74.8123 23.127 75.4217 23.3789C76.0311 23.6309 76.5701 24.0176 77.0389 24.5391C77.5135 25.0605 77.8855 25.7314 78.1551 26.5518C78.4246 27.3721 78.5594 28.3535 78.5594 29.4961V29.5137C78.5594 30.9375 78.3543 32.1562 77.9441 33.1699C77.534 34.1836 76.948 34.96 76.1863 35.499C75.4246 36.0381 74.5105 36.3076 73.4441 36.3076C72.6648 36.3076 71.9617 36.167 71.3348 35.8857C70.7137 35.5986 70.198 35.2061 69.7879 34.708C69.3777 34.21 69.1053 33.6387 68.9705 32.9941L68.9529 32.8975H71.1766L71.2117 32.9766C71.323 33.2754 71.4812 33.5361 71.6863 33.7588C71.8973 33.9756 72.1492 34.1455 72.4422 34.2686C72.741 34.3916 73.075 34.4531 73.4441 34.4531C74.118 34.4531 74.6658 34.2568 75.0877 33.8643C75.5154 33.4658 75.8348 32.9355 76.0457 32.2734C76.2566 31.6055 76.3768 30.8672 76.4061 30.0586C76.4119 29.9707 76.4148 29.8857 76.4148 29.8037C76.4148 29.7158 76.4148 29.6309 76.4148 29.5488L76.0193 27.4395C76.0193 26.9531 75.908 26.5166 75.6854 26.1299C75.4627 25.7373 75.1609 25.4268 74.7801 25.1982C74.4051 24.9639 73.9832 24.8467 73.5145 24.8467C73.0516 24.8467 72.6297 24.9609 72.2488 25.1895C71.868 25.4121 71.5633 25.7139 71.3348 26.0947C71.1062 26.4756 70.992 26.9062 70.992 27.3867V27.4043C70.992 27.8906 71.1004 28.3242 71.3172 28.7051C71.534 29.0801 71.8299 29.376 72.2049 29.5928C72.5857 29.8096 73.0135 29.918 73.4881 29.918C73.9686 29.918 74.3992 29.8125 74.7801 29.6016C75.1609 29.3848 75.4627 29.0918 75.6854 28.7227C75.908 28.3535 76.0193 27.9287 76.0193 27.4482V27.4395H76.5467V29.7598H76.2479C76.0955 30.0938 75.8699 30.4072 75.5711 30.7002C75.2723 30.9873 74.9031 31.2188 74.4637 31.3945C74.0242 31.5703 73.5115 31.6582 72.9256 31.6582C72.117 31.6582 71.3992 31.4766 70.7723 31.1133C70.1512 30.75 69.6648 30.252 69.3133 29.6191C68.9617 28.9863 68.7859 28.2715 68.7859 27.4746V27.457C68.7859 26.6016 68.9852 25.8369 69.3836 25.1631C69.7879 24.4893 70.3445 23.9619 71.0535 23.5811C71.7684 23.1943 72.5828 23.001 73.4969 23.001ZM82.0293 34.2949C81.6367 34.2949 81.3057 34.1631 81.0361 33.8994C80.7725 33.6299 80.6406 33.3018 80.6406 32.915C80.6406 32.5283 80.7725 32.2031 81.0361 31.9395C81.3057 31.6699 81.6367 31.5352 82.0293 31.5352C82.4336 31.5352 82.7676 31.6699 83.0312 31.9395C83.2949 32.2031 83.4268 32.5283 83.4268 32.915C83.4268 33.3018 83.2949 33.6299 83.0312 33.8994C82.7676 34.1631 82.4336 34.2949 82.0293 34.2949ZM82.0293 27.7734C81.6367 27.7734 81.3057 27.6416 81.0361 27.3779C80.7725 27.1084 80.6406 26.7803 80.6406 26.3936C80.6406 26.0068 80.7725 25.6816 81.0361 25.418C81.3057 25.1484 81.6367 25.0137 82.0293 25.0137C82.4336 25.0137 82.7676 25.1484 83.0312 25.418C83.2949 25.6816 83.4268 26.0068 83.4268 26.3936C83.4268 26.7803 83.2949 27.1084 83.0312 27.3779C82.7676 27.6416 82.4336 27.7734 82.0293 27.7734ZM91.6867 36V33.5654H85.4816V31.7109C85.8098 31.1367 86.1437 30.5654 86.4836 29.9971C86.8234 29.4229 87.1662 28.8516 87.5119 28.2832C87.8635 27.709 88.2121 27.1436 88.5578 26.5869C88.9094 26.0244 89.258 25.4707 89.6037 24.9258C89.9553 24.3809 90.3039 23.8447 90.6496 23.3174H93.8488V31.6934H95.5627V33.5654H93.8488V36H91.6867ZM87.5822 31.7461H91.7219V25.1279H91.5988C91.3352 25.5264 91.0656 25.9365 90.7902 26.3584C90.5207 26.7803 90.2482 27.2109 89.9729 27.6504C89.6975 28.0898 89.4221 28.5322 89.1467 28.9775C88.8771 29.4229 88.6105 29.8682 88.3469 30.3135C88.0832 30.7529 87.8283 31.1895 87.5822 31.623V31.7461ZM100.351 36V25.5498H100.202L97.0463 27.7734V25.6465L100.36 23.3174H102.61V36H100.351Z" fill="black"/>
             <rect x="152.5" y="11.33" width="125" height="36.67" rx="18.335" fill="black"/>
             </svg>
-            
+        
+        <div class="button">
+            <div class="left">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.8045 31.7524C7.10492 31.7524 0.0529785 24.7004 0.0529785 16.0009C0.0529785 7.30291 7.10492 0.24939 15.8045 0.24939C24.504 0.24939 31.556 7.30291 31.556 16.0009C31.556 24.7004 24.504 31.7524 15.8045 31.7524ZM15.8045 8.12514C15.3867 8.12514 14.9861 8.29109 14.6907 8.58649C14.3953 8.88189 14.2293 9.28253 14.2293 9.70029V17.576C14.2293 17.9938 14.3953 18.3944 14.6907 18.6898C14.9861 18.9852 15.3867 19.1512 15.8045 19.1512C16.2222 19.1512 16.6229 18.9852 16.9183 18.6898C17.2137 18.3944 17.3796 17.9938 17.3796 17.576V9.70029C17.3796 9.28253 17.2137 8.88189 16.9183 8.58649C16.6229 8.29109 16.2222 8.12514 15.8045 8.12514ZM15.8045 23.8766C16.2222 23.8766 16.6229 23.7107 16.9183 23.4153C17.2137 23.1199 17.3796 22.7192 17.3796 22.3015C17.3796 21.8837 17.2137 21.4831 16.9183 21.1877C16.6229 20.8923 16.2222 20.7263 15.8045 20.7263C15.3867 20.7263 14.9861 20.8923 14.6907 21.1877C14.3953 21.4831 14.2293 21.8837 14.2293 22.3015C14.2293 22.7192 14.3953 23.1199 14.6907 23.4153C14.9861 23.7107 15.3867 23.8766 15.8045 23.8766Z" fill="white"/>
+                    </svg>
+                <p>Apply for Retirement</p>                    
+            </div>
+            <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.48047 7.16943C0.928184 7.16943 0.480469 7.61715 0.480469 8.16943C0.480469 8.72172 0.928184 9.16943 1.48047 9.16943L1.48047 7.16943ZM17.4277 8.87654C17.8182 8.48602 17.8182 7.85285 17.4277 7.46233L11.0637 1.09837C10.6732 0.707842 10.04 0.707842 9.64951 1.09837C9.25899 1.48889 9.25899 2.12206 9.64951 2.51258L15.3064 8.16943L9.64951 13.8263C9.25899 14.2168 9.25899 14.85 9.64951 15.2405C10.04 15.631 10.6732 15.631 11.0637 15.2405L17.4277 8.87654ZM1.48047 9.16943L16.7206 9.16943L16.7206 7.16943L1.48047 7.16943L1.48047 9.16943Z" fill="white"/>
+                </svg>                
+        </div>
+        
+
+        <div class="info">
+            <p class="name">Mr. <%= user.fname %></p>
+            <p><span>₹<%= pension %></span>/month</p>
+            <button disabled>
+                <h1>Withdraw</h1>
+                <p>(not eligible)</p>
+            </button>
+        </div>
+        
         <svg onclick="window.history.back()"" id="back" class="back" width="12" height="21" viewBox="0 0 12 21" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.5304 1.49811L1.50391 10.5246L10.5304 19.551" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-                
-        <p class="name">Mr. <%= user.fname %></p>
-
-        <div class="loyaltyContainer">
-            <h1 class="heading"><%= user.loyaltyLevel %></h1>
-            <div class="percentage">
-                <% if (user.loyaltyLevel == 'Bronze') { %>
-                <svg xmlns="http://www.w3.org/2000/svg" width="63" height="64" viewBox="0 0 63 64" fill="none">
-                    <path d="M62.6334 31.8606C62.6334 49.0663 48.6855 63.0142 31.4798 63.0142C14.2742 63.0142 0.326294 49.0663 0.326294 31.8606C0.326294 14.655 14.2742 0.707092 31.4798 0.707092C48.6855 0.707092 62.6334 14.655 62.6334 31.8606ZM9.67236 31.8606C9.67236 43.9046 19.4359 53.6681 31.4798 53.6681C43.5238 53.6681 53.2873 43.9046 53.2873 31.8606C53.2873 19.8167 43.5238 10.0532 31.4798 10.0532C19.4359 10.0532 9.67236 19.8167 9.67236 31.8606Z" fill="url(#paint0_linear_83_941)"/>
-                    <defs>
-                      <linearGradient id="paint0_linear_83_941" x1="62.6334" y1="0.7071" x2="0.326301" y2="63.0142" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#EF9D22"/>
-                        <stop offset="1" stop-color="#C2801E"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <% } else if (user.loyaltyLevel == 'Silver') { %>
-                    <svg width="64" height="63" viewBox="0 0 64 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M63.0566 31.4147C63.0566 48.6203 49.1087 62.5682 31.9031 62.5682C14.6974 62.5682 0.749512 48.6203 0.749512 31.4147C0.749512 14.209 14.6974 0.261108 31.9031 0.261108C49.1087 0.261108 63.0566 14.209 63.0566 31.4147ZM10.0956 31.4147C10.0956 43.4586 19.8591 53.2222 31.9031 53.2222C43.947 53.2222 53.7106 43.4586 53.7106 31.4147C53.7106 19.3707 43.947 9.60718 31.9031 9.60718C19.8591 9.60718 10.0956 19.3707 10.0956 31.4147Z" fill="url(#paint0_linear_167_358)"/>
-                        <defs>
-                        <linearGradient id="paint0_linear_167_358" x1="63.0566" y1="0.261116" x2="0.749519" y2="62.5682" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#ADADAD"/>
-                        <stop offset="1" stop-color="#DDDDDD"/>
-                        </linearGradient>
-                        </defs>
-                        </svg>
-                    <% } else if (user.loyaltyLevel == 'Gold') {  %>
-                        <svg width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M62.6535 31.4147C62.6535 48.6203 48.7056 62.5682 31.5 62.5682C14.2944 62.5682 0.346436 48.6203 0.346436 31.4147C0.346436 14.209 14.2944 0.261108 31.5 0.261108C48.7056 0.261108 62.6535 14.209 62.6535 31.4147ZM9.6925 31.4147C9.6925 43.4586 19.456 53.2222 31.5 53.2222C43.5439 53.2222 53.3075 43.4586 53.3075 31.4147C53.3075 19.3707 43.5439 9.60718 31.5 9.60718C19.456 9.60718 9.6925 19.3707 9.6925 31.4147Z" fill="url(#paint0_linear_167_359)"/>
-                            <defs>
-                            <linearGradient id="paint0_linear_167_359" x1="62.6535" y1="0.261116" x2="0.346443" y2="62.5682" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#FFDB20"/>
-                            <stop offset="1" stop-color="#D4B566"/>
-                            </linearGradient>
-                            </defs>
-                            </svg>                            
-                    <% } else { %>
-                        <svg width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M62.8851 31.4147C62.8851 48.6203 48.9372 62.5682 31.7316 62.5682C14.5259 62.5682 0.578003 48.6203 0.578003 31.4147C0.578003 14.209 14.5259 0.261108 31.7316 0.261108C48.9372 0.261108 62.8851 14.209 62.8851 31.4147ZM9.92407 31.4147C9.92407 43.4586 19.6876 53.2222 31.7316 53.2222C43.7755 53.2222 53.539 43.4586 53.539 31.4147C53.539 19.3707 43.7755 9.60718 31.7316 9.60718C19.6876 9.60718 9.92407 19.3707 9.92407 31.4147Z" fill="url(#paint0_linear_167_360)"/>
-                            <defs>
-                            <linearGradient id="paint0_linear_167_360" x1="62.8851" y1="0.261116" x2="0.57801" y2="62.5682" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#206CFF"/>
-                            <stop offset="1" stop-color="#33BBCD"/>
-                            </linearGradient>
-                            </defs>
-                            </svg>
-                    <% } %>                            
-                                                    
-                  <h1><%= percentage %></h1>
-            </div>
-        </div>
-
-        <% if (user.loyaltyLevel == 'Bronze') { %>
-            <img class="image" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264844512967266344/image.png?ex=669f59bf&is=669e083f&hm=c2221d506f467167a1e13f0010e2e5cadf9d0e8dc2e044365d92a6430899b80a&" alt="">
-        <% } else if (user.loyaltyLevel == 'Silver') { %>
-            <img class="image" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264853226738417724/image.png?ex=669f61dd&is=669e105d&hm=33516d17c0e916a879b53b1fb40b8023fb0a4ec26ee75246133fa5ab6aa62725&" alt="">
-        <% } else if (user.loyaltyLevel == 'Gold' ) { %>
-            <img class="image" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264853278697455737/image.png?ex=669f61e9&is=669e1069&hm=e12973fd5a63d3b19bb9a7e3b4a35ff510cb6e32ec1218bd6d27fbace75b2fc6&" alt="">
-        <% } else { %>
-            <img class="image" src="https://cdn.discordapp.com/attachments/1168887401884680215/1264853304609996920/image.png?ex=669f61ef&is=669e106f&hm=7e4117732ae6a99089dc70264405394fdbd0256ca582b2c87017b97a55982429&" alt="">
-        <% } %>
 
         <div class="navbar">
             <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -227,12 +242,5 @@
         document.getElementById('up-time').style.display = 'none'
     }
 
-    const loyalty = document.getElementById('loyalty')
-
-    loyalty.addEventListener('click', () => {
-        window.location.href = 'bhenchod'
-    })
-
 </script>
-
 </html>
